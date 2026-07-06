@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+::selection{background:#211A12;color:#F4EADA;}
+@keyframes gmarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes gfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+@keyframes gfloat2{0%,100%{transform:translateY(0)}50%{transform:translateY(13px)}}
+@keyframes gspin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+</style>
+</helmet>
+
+<div style="font-family:'DM Sans',system-ui,sans-serif;color:#211A12;background:#F4EADA;overflow-x:hidden;-webkit-font-smoothing:antialiased;">
+
+  <!-- announcement -->
+  <div style="background:#211A12;color:#F4EADA;font-size:13px;letter-spacing:.04em;padding:10px 20px;text-align:center;font-weight:500;">
+    {{ bannerText }}
+  </div>
+
+  <!-- nav -->
+  <nav style="position:sticky;top:0;z-index:50;background:rgba(244,234,218,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(33,26,18,.09);">
+    <div style="max-width:1240px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+      <a href="#top" style="display:flex;align-items:center;">
+        <img src="images/logo.png" alt="Goood Nutrition" style="height:34px;width:auto;display:block;">
+      </a>
+      <div style="display:flex;align-items:center;gap:28px;font-size:15px;font-weight:500;">
+        <a href="#urunler" style="text-decoration:none;color:#211A12;opacity:.75;">Ürünler</a>
+        <a href="#kesfet" style="text-decoration:none;color:#211A12;opacity:.75;">Keşfet</a>
+        <a href="#neden" style="text-decoration:none;color:#211A12;opacity:.75;">Neden Goood</a>
+        <a href="#yorumlar" style="text-decoration:none;color:#211A12;opacity:.75;">Yorumlar</a>
+        <a href="{{ storeUrl }}" target="_blank" rel="noopener" style="text-decoration:none;color:#F4EADA;background:#211A12;padding:11px 20px;border-radius:100px;font-weight:600;font-size:14px;">Trendyol'da Al →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- hero -->
+  <header id="top" style="max-width:1240px;margin:0 auto;padding:56px 24px 44px;display:grid;grid-template-columns:1.02fr 1.05fr;gap:44px;align-items:center;">
+    <div style="position:relative;z-index:2;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:#FFF;border:1px solid rgba(33,26,18,.1);padding:7px 14px;border-radius:100px;font-size:13px;font-weight:600;margin-bottom:24px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:#159AA6;display:inline-block;"></span>
+        Şeker ilavesiz · Bitkisel · Vegan
+      </div>
+      <h1 style="font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(46px,6vw,82px);line-height:.95;letter-spacing:-.035em;margin:0 0 22px;">
+        Her gün, biraz<br>daha <span style="color:#E9531B;">goood</span><br>hisset.
+      </h1>
+      <p style="font-size:19px;line-height:1.5;max-width:440px;margin:0 0 32px;opacity:.72;">
+        Doğadan ilham alan, şeker ilavesiz bitkisel pastiller. Sakinlik, ses, bağışıklık ve sindirim için cebinde taşıyabileceğin küçük ritüeller.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
+        <a href="{{ storeUrl }}" target="_blank" rel="noopener" style="text-decoration:none;color:#F4EADA;background:#211A12;padding:16px 30px;border-radius:100px;font-weight:700;font-size:16px;">Şimdi Dene</a>
+        <a href="#urunler" style="text-decoration:none;color:#211A12;padding:16px 26px;border-radius:100px;font-weight:600;font-size:16px;border:1.5px solid rgba(33,26,18,.18);">Ürünleri Keşfet</a>
+      </div>
+      <div style="display:flex;gap:26px;margin-top:38px;">
+        <div><div style="font-family:'Bricolage Grotesque';font-weight:700;font-size:26px;">24'lü</div><div style="font-size:13px;opacity:.6;">pratik pastil</div></div>
+        <div style="width:1px;background:rgba(33,26,18,.14);"></div>
+        <div><div style="font-family:'Bricolage Grotesque';font-weight:700;font-size:26px;">%0</div><div style="font-size:13px;opacity:.6;">ilave şeker</div></div>
+        <div style="width:1px;background:rgba(33,26,18,.14);"></div>
+        <div><div style="font-family:'Bricolage Grotesque';font-weight:700;font-size:26px;">4</div><div style="font-size:13px;opacity:.6;">fonksiyon</div></div>
+      </div>
+    </div>
+
+    <!-- hero collage -->
+    <div style="position:relative;height:560px;">
+      <div style="position:absolute;top:0;right:0;width:78%;height:88%;border-radius:28px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(33,26,18,.5);">
+        <img src="images/hero-pastilles.webp" alt="goood pastiller" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div style="position:absolute;bottom:0;left:0;width:46%;height:44%;border-radius:22px;overflow:hidden;border:6px solid #F4EADA;box-shadow:0 22px 44px -22px rgba(33,26,18,.5);animation:gfloat2 7s ease-in-out infinite;">
+        <img src="images/life-relief-mouth.webp" alt="goood anı" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div style="position:absolute;top:8%;left:-4%;background:#FFF;border-radius:18px;padding:12px;box-shadow:0 20px 40px -18px rgba(33,26,18,.45);animation:gfloat 6s ease-in-out infinite;width:150px;">
+        <img src="images/bundle.webp" alt="Goood ailesi" style="width:100%;height:auto;display:block;">
+        <div style="font-size:12px;font-weight:700;text-align:center;margin-top:4px;">4 fonksiyon, tek kutu</div>
+      </div>
+      <div style="position:absolute;top:40%;right:-14px;width:96px;height:96px;border-radius:50%;background:#E9531B;color:#FFF;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:13px;line-height:1.05;animation:gspin 14s linear infinite;box-shadow:0 14px 28px -12px rgba(233,83,27,.7);">şeker<br>ilavesiz</div>
+    </div>
+  </header>
+
+  <!-- marquee -->
+  <div style="background:#211A12;color:#F4EADA;overflow:hidden;padding:16px 0;white-space:nowrap;">
+    <div style="display:inline-flex;animation:gmarquee 26s linear infinite;">
+      <span style="font-family:'Bricolage Grotesque';font-weight:700;font-size:22px;letter-spacing:-.01em;">{{ marquee }}{{ marquee }}</span>
+    </div>
+  </div>
+
+  <!-- trust badges -->
+  <section style="max-width:1240px;margin:0 auto;padding:44px 24px 8px;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+      <sc-for list="{{ badges }}" as="b" hint-placeholder-count="4">
+        <div style="background:#FFF;border:1px solid rgba(33,26,18,.07);border-radius:20px;padding:22px 20px;">
+          <div style="width:40px;height:40px;border-radius:12px;background:{{ b.color }}1f;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+            <span style="width:16px;height:16px;border-radius:5px;background:{{ b.color }};display:block;"></span>
+          </div>
+          <div style="font-family:'Bricolage Grotesque';font-weight:700;font-size:18px;margin-bottom:4px;">{{ b.title }}</div>
+          <div style="font-size:14px;opacity:.62;line-height:1.4;">{{ b.text }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- product grid -->
+  <section id="urunler" style="max-width:1240px;margin:0 auto;padding:56px 24px;">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:34px;">
+      <div>
+        <div style="font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#E9531B;margin-bottom:10px;">Ürün Ailesi</div>
+        <h2 style="font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(32px,4vw,50px);letter-spacing:-.03em;margin:0;">Ne hissetmek istersin?</h2>
+      </div>
+      <a href="{{ storeUrl }}" target="_blank" rel="noopener" style="text-decoration:none;color:#211A12;font-weight:600;font-size:15px;border-bottom:2px solid #211A12;padding-bottom:2px;">Tümünü Trendyol'da gör →</a>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+      <sc-for list="{{ products }}" as="p" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;background:#FFF;border:1px solid rgba(33,26,18,.07);border-radius:24px;overflow:hidden;transition:transform .2s,box-shadow .2s;" style-hover="transform:translateY(-6px);box-shadow:0 26px 50px -24px rgba(33,26,18,.4)">
+          <div style="position:relative;background:{{ p.tint }};padding:22px;display:flex;align-items:center;justify-content:center;">
+            <span style="position:absolute;top:14px;left:14px;background:{{ p.color }};color:#FFF;font-weight:700;font-size:12px;padding:6px 12px;border-radius:100px;">{{ p.sub }}</span>
+            <img src="{{ p.box }}" alt="goood {{ p.name }}" style="width:100%;height:170px;object-fit:contain;display:block;">
+          </div>
+          <div style="padding:20px;display:flex;flex-direction:column;flex:1;">
+            <h3 style="font-family:'Bricolage Grotesque';font-weight:700;font-size:22px;margin:0 0 8px;">goood {{ p.name }}</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;flex:1;align-content:flex-start;">
+              <sc-for list="{{ p.ings }}" as="ing" hint-placeholder-count="4">
+                <span style="background:#F4EADA;color:#211A12;font-weight:600;font-size:12px;padding:5px 10px;border-radius:100px;">{{ ing }}</span>
+              </sc-for>
+            </div>
+            <a href="{{ p.url }}" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;background:{{ p.color }};color:#FFF;font-weight:700;font-size:14px;padding:13px;border-radius:100px;">Trendyol'da İncele →</a>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- editorial deep dive -->
+  <section id="kesfet" style="background:#EBDFC9;">
+    <div style="max-width:1180px;margin:0 auto;padding:76px 24px;display:flex;flex-direction:column;gap:22px;">
+      <div style="text-align:center;margin-bottom:10px;">
+        <div style="font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.5;margin-bottom:10px;">Her ihtiyaca bir pastil</div>
+        <h2 style="font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(30px,4vw,50px);letter-spacing:-.03em;margin:0;">Doğanın gücü, cebinde.</h2>
+      </div>
+      <sc-for list="{{ products }}" as="p" hint-placeholder-count="4">
+        <div style="background:#FFF;border-radius:28px;overflow:hidden;display:flex;flex-direction:{{ p.flip }};align-items:stretch;box-shadow:0 20px 50px -34px rgba(33,26,18,.5);">
+          <div style="flex:0 0 46%;min-height:360px;overflow:hidden;">
+            <img src="{{ p.editorial }}" alt="goood {{ p.name }}" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:1;padding:44px 46px;display:flex;flex-direction:column;justify-content:center;">
+            <div style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:{{ p.color }};margin-bottom:12px;">{{ p.sub }}</div>
+            <h3 style="font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(28px,3.4vw,40px);letter-spacing:-.02em;margin:0 0 14px;">goood {{ p.name }}</h3>
+            <p style="font-size:17px;line-height:1.55;opacity:.72;margin:0 0 22px;max-width:440px;">{{ p.long }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;">
+              <sc-for list="{{ p.ings }}" as="ing" hint-placeholder-count="4">
+                <span style="background:{{ p.tint }};color:#211A12;font-weight:600;font-size:13px;padding:8px 14px;border-radius:100px;">{{ ing }}</span>
+              </sc-for>
+            </div>
+            <a href="{{ p.url }}" target="_blank" rel="noopener" style="align-self:flex-start;text-decoration:none;color:#FFF;background:{{ p.color }};font-weight:700;font-size:15px;padding:14px 28px;border-radius:100px;">Trendyol'da Al →</a>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- brand film -->
+  <section style="max-width:1240px;margin:0 auto;padding:72px 24px 24px;">
+    <div style="position:relative;border-radius:28px;overflow:hidden;background:#211A12;box-shadow:0 26px 60px -32px rgba(33,26,18,.6);">
+      <video ref="{{ videoRef }}" src="video/goood_deneme_kurgu_uzun.mp4" poster="images/hero-ginger.webp" playsinline preload="metadata" controls="{{ playing }}" onPlay="{{ onPlay }}" onPause="{{ onPause }}" style="width:100%;display:block;max-height:640px;object-fit:contain;background:#211A12;"></video>
+    <div onClick="{{ onPlayClick }}" style="position:absolute;inset:0;cursor:pointer;display:{{ overlayDisplay }};">
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(33,26,18,.55),rgba(33,26,18,.06));"></div>
+      <div style="position:absolute;left:44px;bottom:40px;color:#FFF;max-width:460px;z-index:2;">
+        <div style="font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.85;margin-bottom:10px;">Goood Film</div>
+        <h3 style="font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(26px,3vw,38px);letter-spacing:-.02em;margin:0;">Doğadan ilham, etki için tasarım.</h3>
+      </div>
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;z-index:2;box-shadow:0 14px 30px -10px rgba(0,0,0,.5);">
+        <div style="width:0;height:0;border-left:22px solid #211A12;border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:6px;"></div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- neden goood -->
+  <section id="neden" style="max-width:1180px;margin:0 auto;padding:64px 24px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
+    <div style="border-radius:28px;overflow:hidden;box-shadow:0 24px 50px -30px rgba(33,26,18,.5);">
+      <img src="images/life-characters.webp" alt="Goood karakterleri" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div>
+      <div style="font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#159AA6;margin-bottom:16px;">Neden Goood?</div>
+      <h2 style="font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(30px,4vw,48px);line-height:1.05;letter-spacing:-.03em;margin:0 0 22px;">Mükemmel olmayı değil, daha iyi hissetmeyi önemseyenler için.</h2>
+      <p style="font-size:17px;line-height:1.6;opacity:.72;margin:0 0 18px;">Goood Nutrition, modern hayatın temposunda iyi hissetmeyi sade ve ulaşılabilir hale getirmek için yola çıktı. Karmaşık rutinler değil; küçük, sürdürülebilir alışkanlıklar.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px;">
+        <sc-for list="{{ pillars }}" as="pl" hint-placeholder-count="4">
+          <div style="background:#FFF;border-radius:18px;padding:18px;">
+            <div style="width:12px;height:12px;border-radius:50%;background:{{ pl.color }};margin-bottom:12px;"></div>
+            <div style="font-family:'Bricolage Grotesque';font-weight:700;font-size:17px;margin-bottom:4px;">{{ pl.title }}</div>
+            <div style="font-size:13px;opacity:.62;line-height:1.4;">{{ pl.text }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ritual box CTA -->
+  <section style="max-width:1240px;margin:0 auto 12px;padding:0 24px;">
+    <div style="background:#2F3B22;border-radius:32px;padding:52px 48px;color:#F4EADA;display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center;overflow:hidden;position:relative;">
+      <div style="position:relative;z-index:2;">
+        <div style="display:inline-block;background:rgba(244,234,218,.16);font-weight:700;font-size:13px;padding:7px 14px;border-radius:100px;margin-bottom:18px;">Hepsini dene</div>
+        <h2 style="font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(30px,4vw,46px);letter-spacing:-.02em;line-height:1.05;margin:0 0 14px;">Tanışma Kiti — 4 fonksiyon tek kutuda.</h2>
+        <p style="font-size:17px;line-height:1.55;opacity:.9;max-width:440px;margin:0 0 26px;">Ginger, Voice, Vibes ve Relief bir arada. Gününün her anına uygun bitkisel ritüelini keşfet.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="{{ kitUrl }}" target="_blank" rel="noopener" style="text-decoration:none;color:#2F3B22;background:#F4EADA;font-weight:700;font-size:16px;padding:15px 28px;border-radius:100px;">Tanışma Kiti'ni Al →</a>
+          <a href="{{ ritualUrl }}" target="_blank" rel="noopener" style="text-decoration:none;color:#F4EADA;font-weight:600;font-size:16px;padding:15px 24px;border-radius:100px;border:1.5px solid rgba(244,234,218,.5);">Ritual Box (96'lı)</a>
+        </div>
+      </div>
+      <div style="position:relative;z-index:2;background:#FFF;border-radius:20px;padding:20px;box-shadow:0 24px 44px -22px rgba(0,0,0,.5);">
+        <img src="images/bundle.webp" alt="Goood Tanışma Kiti" style="width:100%;height:auto;display:block;">
+      </div>
+    </div>
+  </section>
+
+  <!-- reviews -->
+  <section id="yorumlar" style="max-width:1240px;margin:0 auto;padding:72px 24px;">
+    <div style="text-align:center;margin-bottom:36px;">
+      <div style="font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#7C1E2A;margin-bottom:10px;">Topluluk</div>
+      <h2 style="font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(30px,4vw,48px);letter-spacing:-.03em;margin:0;">Goood hissedenler ne diyor?</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="3">
+        <div style="background:#FFF;border:1px solid rgba(33,26,18,.07);border-radius:24px;padding:28px;display:flex;flex-direction:column;">
+          <div style="color:#E9531B;font-size:16px;letter-spacing:2px;margin-bottom:14px;">★★★★★</div>
+          <p style="font-size:16px;line-height:1.55;margin:0 0 22px;flex:1;">"{{ r.text }}"</p>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:42px;height:42px;border-radius:50%;background:{{ r.color }};color:#FFF;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque';font-weight:700;">{{ r.initial }}</div>
+            <div>
+              <div style="font-weight:700;font-size:15px;">{{ r.name }}</div>
+              <div style="font-size:13px;opacity:.55;">{{ r.tag }}</div>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- instagram -->
+  <section style="background:#211A12;color:#F4EADA;">
+    <div style="max-width:1240px;margin:0 auto;padding:64px 24px;">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:28px;">
+        <div>
+          <div style="font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.5;margin-bottom:10px;">Takipte kal</div>
+          <h2 style="font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(28px,4vw,44px);letter-spacing:-.03em;margin:0;">@goood_nutrition</h2>
+        </div>
+        <a href="https://www.instagram.com/goood_nutrition/" target="_blank" rel="noopener" style="text-decoration:none;color:#211A12;background:#F4EADA;font-weight:700;font-size:15px;padding:13px 24px;border-radius:100px;">Instagram'da Takip Et</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:12px;">
+        <sc-for list="{{ insta }}" as="ig" hint-placeholder-count="6">
+          <a href="https://www.instagram.com/goood_nutrition/" target="_blank" rel="noopener" style="aspect-ratio:1;border-radius:16px;overflow:hidden;display:block;">
+            <img src="{{ ig }}" alt="Goood Instagram" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s;" style-hover="transform:scale(1.06)">
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- newsletter -->
+  <section style="max-width:1240px;margin:0 auto;padding:72px 24px;">
+    <div style="background:#159AA6;border-radius:32px;padding:56px 40px;text-align:center;color:#FFF;position:relative;overflow:hidden;">
+      <div style="position:absolute;bottom:-70px;left:12%;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.1);"></div>
+      <div style="position:relative;z-index:2;max-width:560px;margin:0 auto;">
+        <h2 style="font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(28px,4vw,42px);letter-spacing:-.02em;margin:0 0 12px;">Her ay biraz daha goood.</h2>
+        <p style="font-size:17px;line-height:1.5;opacity:.92;margin:0 0 28px;">Bitkisel ipuçları, yeni ürünler ve sana özel indirimler için bültene katıl.</p>
+        <form onSubmit="{{ onSubscribe }}" style="display:flex;gap:10px;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center;">
+          <input type="email" required placeholder="E-posta adresin" value="{{ email }}" onChange="{{ onEmail }}" style="flex:1;min-width:220px;border:none;border-radius:100px;padding:16px 22px;font-size:16px;font-family:'DM Sans';color:#211A12;outline:none;">
+          <button type="submit" style="border:none;cursor:pointer;background:#211A12;color:#FFF;font-weight:700;font-size:16px;font-family:'DM Sans';padding:16px 30px;border-radius:100px;">{{ subscribeLabel }}</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer style="background:#211A12;color:#F4EADA;">
+    <div style="max-width:1240px;margin:0 auto;padding:56px 24px 34px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;">
+      <div>
+        <img src="images/logo.png" alt="Goood Nutrition" style="height:34px;width:auto;display:block;margin-bottom:16px;filter:brightness(0) invert(1);">
+        <p style="font-size:15px;line-height:1.55;opacity:.6;max-width:320px;margin:0;">Doğadan ilham alan, şeker ilavesiz bitkisel fonksiyonel pastiller. Her adımda sağlıkla.</p>
+      </div>
+      <div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:16px;opacity:.5;letter-spacing:.06em;">ÜRÜNLER</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;">
+          <sc-for list="{{ products }}" as="p" hint-placeholder-count="4">
+            <a href="{{ p.url }}" target="_blank" rel="noopener" style="text-decoration:none;color:#F4EADA;opacity:.75;">goood {{ p.name }}</a>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:16px;opacity:.5;letter-spacing:.06em;">İLETİŞİM</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;opacity:.75;">
+          <a href="https://www.instagram.com/goood_nutrition/" target="_blank" rel="noopener" style="text-decoration:none;color:#F4EADA;">Instagram</a>
+          <a href="{{ storeUrl }}" target="_blank" rel="noopener" style="text-decoration:none;color:#F4EADA;">Trendyol Mağaza</a>
+          <a href="{{ siteUrl }}" target="_blank" rel="noopener" style="text-decoration:none;color:#F4EADA;">gooodnutrition.com</a>
+          <a href="mailto:nutritiongoood@gmail.com" style="text-decoration:none;color:#F4EADA;">nutritiongoood@gmail.com</a>
+          <span>Ankara, Türkiye</span>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(244,234,218,.12);">
+      <div style="max-width:1240px;margin:0 auto;padding:20px 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;opacity:.5;">
+        <span>© 2026 Goood Nutrition® — Canbulan Sağlık ve Gıda Ticaret A.Ş.</span>
+        <span>Şeker ilavesiz · Bitkisel · Vegan</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280},&quot;bannerText&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Şeker ilavesiz · Bitkisel · Vegan — Trendyol'da hemen keşfet&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;İçerik&quot;}}">
+class Component extends DCLogic {
+  state = { email: "", subscribed: false, playing: false };
+  videoRef = React.createRef();
+
+  renderVals() {
+    const C = { ginger:"#E9531B", voice:"#7C1E2A", vibes:"#2F3B22", relief:"#159AA6" };
+    const T = { ginger:"#FBE7DC", voice:"#F0E1E2", vibes:"#E5E8DD", relief:"#DDEFF1" };
+
+    const products = [
+      { name:"Ginger", sub:"Bağışıklık", color:C.ginger, tint:T.ginger, flip:"row",
+        box:"images/box-ginger.webp", editorial:"images/life-ginger-hold.webp",
+        ings:["Zencefil","Zerdeçal","Portakal","Bal"],
+        long:"Zencefil, zerdeçal ve C vitamininin gücüyle günlük bağışıklık rutinini güçlendir. Mevsim geçişlerinde ve yoğun temponun ortasında yanında.",
+        url:"https://www.trendyol.com/goood-nutrition/goood-ginger-bitkisel-24-lu-pastil-zencefil-zerdecal-c-vitamini-p-1057594054?boutiqueId=61&merchantId=1189977" },
+      { name:"Voice", sub:"Ses & Boğaz", color:C.voice, tint:T.voice, flip:"row-reverse",
+        box:"images/box-voice.webp", editorial:"images/life-voice-smile.webp",
+        ings:["Kiraz","Kuşburnu","Limon","Mentol"],
+        long:"Boğazını yatıştır, sesinin netliğini koru. Şarkıcılar, konuşmacılar ve sesini çok kullanan herkes için nemlendirici bitkisel destek.",
+        url:"https://www.trendyol.com/goood-nutrition/goood-voice-bogaz-rahatlatici-bitkisel-24-lu-pastil-ses-koruma-nemlendirme-p-1060517233?boutiqueId=61&merchantId=1189977" },
+      { name:"Vibes", sub:"Sakinlik & Odak", color:C.vibes, tint:T.vibes, flip:"row",
+        box:"images/box-vibes.webp", editorial:"images/pattern-vibes.webp",
+        ings:["L-Theanine","Rhodiola","Passiflora","Melisa"],
+        long:"Şekersiz mikrodoz formülüyle stresli anlarda dengeni bul, dikkatini topla. Yoğun günlerin ve sakinlik arayan zihinlerin yol arkadaşı.",
+        url:"https://www.trendyol.com/goood-nutrition/goood-vibes-bitkisel-sakinlestirici-odak-destek-24-lu-pastil-sekersiz-l-theanine-magnezyum-p-1060508635?boutiqueId=61&merchantId=1189977" },
+      { name:"Relief", sub:"Sindirim", color:C.relief, tint:T.relief, flip:"row-reverse",
+        box:"images/box-relief.webp", editorial:"images/life-relief-mouth.webp",
+        ings:["Mentol","Nane","Rezene","Limon"],
+        long:"Nane, rezene ve mentolle öğün sonrasına bitkisel bir dokunuş ekle. Şişkinliğe karşı, mideni yatıştıran hafif ve ferah bir ritüel.",
+        url:"https://www.trendyol.com/goood-nutrition/goood-relief-sindirim-destekleyici-bitkisel-24-lu-pastil-mide-rahatlatici-siskinlik-karsiti-p-1060514097?boutiqueId=61&merchantId=1189977" },
+    ];
+
+    const badges = [
+      { title:"Şeker İlavesiz", text:"Tatlı ama fonksiyonel, ilave şeker yok.", color:C.relief },
+      { title:"%100 Bitkisel", text:"Doğadan ilham alan temiz içerikler.", color:C.ginger },
+      { title:"Vegan Formül", text:"Bilinçli ve nazik, herkese uygun.", color:C.vibes },
+      { title:"Pratik Mikrodoz", text:"24'lü pastil, her an cebinde.", color:C.voice },
+    ];
+
+    const pillars = [
+      { title:"Sade", text:"Karmaşık rutin yok, tek pastil.", color:C.ginger },
+      { title:"Sürdürülebilir", text:"Küçük ama kalıcı alışkanlıklar.", color:C.vibes },
+      { title:"Ulaşılabilir", text:"İyi hissetmeyi ertelemeyenler için.", color:C.relief },
+      { title:"Dengeli", text:"Hayatın akışına uyumlu.", color:C.voice },
+    ];
+
+    const reviews = [
+      { text:"Voice'u çantamdan eksik etmiyorum. Uzun toplantı günlerinde boğazımı gerçekten rahatlatıyor.", name:"Elif K.", tag:"Eğitmen", initial:"E", color:C.voice },
+      { text:"Vibes yoğun dönemde kurtarıcım oldu. Şekersiz olması da ayrı bir artı, tadı da harika.", name:"Mert A.", tag:"Öğrenci", initial:"M", color:C.vibes },
+      { text:"Ağır yemeklerden sonra Relief tam aradığım his. Hafiflemek çok kolaylaştı.", name:"Selin D.", tag:"Goood üyesi", initial:"S", color:C.relief },
+    ];
+
+    const insta = [
+      "images/hero-ginger.webp",
+      "images/life-voice-pocket.webp",
+      "images/life-float.webp",
+      "images/pattern-relief.webp",
+      "images/pattern-voice.webp",
+      "images/flatlay.webp",
+    ];
+
+    return {
+      bannerText: this.props.bannerText ?? "Şeker ilavesiz · Bitkisel · Vegan — Trendyol'da hemen keşfet",
+      storeUrl: "https://www.trendyol.com/magaza/goood-nutrition-m-1189977?channelId=1&sst=0&sk=1",
+      siteUrl: "https://www.gooodnutrition.com/",
+      ritualUrl: "https://www.trendyol.com/pd/goood-nutrition/4-lu-ritual-box-4-farkli-bitkisel-pastil-vibes-voice-ginger-relief-toplam-96-pastil-p-1142628290?boutiqueId=61&merchantId=1189977",
+      kitUrl: "https://www.trendyol.com/goood-nutrition/goood-tanisma-kiti-4-farkli-bitkisel-pastil-vibes-voice-ginger-relief-toplam-24-pastil-p-1135334619?boutiqueId=61&merchantId=1189977",
+      marquee: "Goood Kal · Yolculuğun her anında Goood yanında · Şeker ilavesiz & Bitkisel · ",
+      products, badges, pillars, reviews, insta,
+      videoRef: this.videoRef,
+      playing: this.state.playing,
+      overlayDisplay: this.state.playing ? "none" : "block",
+      onPlayClick: () => { const v = this.videoRef.current; if (v) { v.play(); } },
+      onPlay: () => this.setState({ playing: true }),
+      onPause: () => this.setState({ playing: false }),
+      email: this.state.email,
+      subscribeLabel: this.state.subscribed ? "Teşekkürler! ✓" : "Katıl",
+      onEmail: (e) => this.setState({ email: e.target.value }),
+      onSubscribe: (e) => { e.preventDefault(); this.setState({ subscribed: true }); },
+    };
+  }
+}
+</script>
+</body>
+</html>
